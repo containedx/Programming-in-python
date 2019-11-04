@@ -1,7 +1,9 @@
+#programik tworzacy cmentarz XD
+
 import turtle
 from turtle import *
 
-def Cementary( N, M ):
+def Cementary( N, M ): #funkcja wypelniajaca cmentarz pustymi kwaterami
     kwartal = []
     for i in range (0,N):
         kwatera = []
@@ -11,32 +13,32 @@ def Cementary( N, M ):
     print("Cementary is ready :>")
     return kwartal
 
-def dig(kwartal, *param):
+def dig(kwartal, *param): #kopanie dolu == wpisanie do kwatery slownika na dane
     for i in param:
         kwartal[i[0]][i[1]]={}
     return kwartal
 
-def bury(kwartal, row, col, *info):
-    if kwartal[row][col] == 'None':
-        print(row,", ", col, "nie wykopano dołu")
+def bury(kwartal, row, col, *info): #pochowek indywidualny, lokalizacja, informacje o szczatkach
+    if kwartal[row][col] != {}:  #jesli nie wykopano dolu to ninu
+        print(row,", ", col, "nie wykopano dołu lub ktos pogrzebany!")
         return
-    else:
+    else:                   #jak wszystko okejo to wsadzamy :)
         Dict=list(info)
         kwartal[row][col]=Dict.copy()
         return kwartal
 
-def group_bury(kwartal, *param): #param: ( row, kol, *info)
+def group_bury(kwartal, *param): #param: ( row, kol, *info)  #pochowek zbiorowy xdd
         for i in param:
             bury(kwartal, i[0], i[1], i[2])
 
-def star():
+def star():                 #rysowanie gwiazdki 
     for z in range(5):                    
             turtle.forward(30)
             turtle.right(144)
     return
 
 
-def draw(kwartal, N, M):
+def draw(kwartal, N, M):   #wizualizacja cmentarza, rysujemy kwatery puste i pelne
     #turtle.speed(1)
     for i in range(0,N):
         for j in range(0,M):
@@ -74,14 +76,14 @@ def draw(kwartal, N, M):
             
         
 
-
-sementary = Cementary(3,3) 
+#MAIN czy cos tam
+sementary = Cementary(3,3)    
 print(sementary)
 
-dig(sementary, (0,0), (1,0));
+dig(sementary, (0,0), (1,0), (2,1));
 print(sementary)
 
-group_bury( sementary, (0,0, "rozgwiazda 1"), (1,0, "rozgwiazda 2") );
+group_bury( sementary, (0,0, "rozgwiazda 1"), (1,0, "rozgwiazda 2"), (2, 1, "ametyst" ))
 print(sementary)
 
 
