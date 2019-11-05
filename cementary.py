@@ -39,7 +39,7 @@ def star():                 #rysowanie gwiazdki
 
 
 def draw(kwartal, N, M):   #wizualizacja cmentarza, rysujemy kwatery puste i pelne
-    #turtle.speed(1)
+    turtle.speed(6)
     for i in range(0,N):
         for j in range(0,M):
             
@@ -77,16 +77,45 @@ def draw(kwartal, N, M):   #wizualizacja cmentarza, rysujemy kwatery puste i pel
         
 
 #MAIN czy cos tam
-sementary = Cementary(3,3)    
+sementary = Cementary(5,5)    
 print(sementary)
 
-dig(sementary, (0,0), (1,0), (2,1));
+dig(sementary, (0,0), (1,0), (2,1))
 print(sementary)
 
 group_bury( sementary, (0,0, "rozgwiazda 1"), (1,0, "rozgwiazda 2"), (2, 1, "ametyst" ))
 print(sementary)
 
 
+
+
+
+
+
+##### update 5.11
+# nowa funkcja grzebiaca umarlych <3
+
+def procedure( cementary, x, y, *, arms, **args ): #cmentarz, ,pozycja, liczba ramion, **pozostałe argumenty- słownik
+    print("******\nramiona: ", arms, "arg: ", args, "\n********")
+    if cementary[x][y] != {} :
+        return
+    else:        
+        cementary[x][y]['arms'] = arms
+        cementary[x][y].update(args)   #dopisanie wartosci do slownika
+
+
+
+
+dig(sementary, (3,3))
+procedure(sementary, 3, 3, arms=5, arg="arg1", arg2="arg2")  # '*' w def parametrow wymusza uzycie arms='...' :)
+
+print(sementary)
+
 draw(sementary, 3, 3)
+
+
+
+
+
 
 
